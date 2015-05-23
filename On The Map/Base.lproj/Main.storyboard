@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -28,6 +29,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCS-G7-tiI">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
@@ -39,7 +41,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="16" y="348" width="568" height="53"/>
                                 </variation>
@@ -167,20 +169,35 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7jh-YB-bQD">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
-                                </variation>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7jh-YB-bQD" firstAttribute="top" secondItem="RIM-XH-eQB" secondAttribute="topMargin" id="8Aj-uy-lQW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7jh-YB-bQD" secondAttribute="trailing" constant="-16" id="SWi-6c-cr1"/>
+                            <constraint firstItem="7jh-YB-bQD" firstAttribute="leading" secondItem="RIM-XH-eQB" secondAttribute="leadingMargin" constant="-16" id="qCN-Xv-Zqc"/>
+                            <constraint firstItem="7jh-YB-bQD" firstAttribute="bottom" secondItem="RIM-XH-eQB" secondAttribute="bottomMargin" id="zXs-3u-KFA"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="7jh-YB-bQD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8Aj-uy-lQW"/>
+                                <exclude reference="SWi-6c-cr1"/>
+                                <exclude reference="qCN-Xv-Zqc"/>
+                                <exclude reference="zXs-3u-KFA"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="7jh-YB-bQD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8Aj-uy-lQW"/>
+                                <include reference="SWi-6c-cr1"/>
+                                <include reference="qCN-Xv-Zqc"/>
+                                <include reference="zXs-3u-KFA"/>
                             </mask>
                         </variation>
                     </view>
