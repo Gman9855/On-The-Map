@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.text = "gbay9855@yahoo.com"
+        passwordTextField.text = "ebayrox9855"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
