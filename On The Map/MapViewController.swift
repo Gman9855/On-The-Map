@@ -23,26 +23,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         locationManager.requestWhenInUseAuthorization()
-        mapView.showsUserLocation = true
+        self.mapView.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     
         NSOperationQueue.mainQueue().addOperationWithBlock(fetchStudentDataAndDropPins)
-    }
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            annotationView.canShowCallout = true
-            annotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
-        } else {
-            annotationView.annotation = annotation
-        }
-        
-        return annotationView
     }
     
     func fetchStudentDataAndDropPins() {
@@ -66,10 +53,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 students.append(student)
             }
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.mapView.delegate = self
                 self.mapView.addAnnotations(students)
+                self.mapView.selectAnnotation(students[0], animated: true)
             })
         }
         task.resume()
+    }
+    
+    // MARK: MapView Delegate
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if let annotation = annotation as? Student {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIView
+            }
+            return view
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        var studentMediaURL = view.annotation.subtitle!
+        if studentMediaURL != nil {
+            if studentMediaURL.rangeOfString("http") == nil {
+                studentMediaURL = "http://" + studentMediaURL
+            }
+            UIApplication.sharedApplication().openURL(NSURL(string: studentMediaURL)!)
+        } else {
+            return
+        }
     }
 }
