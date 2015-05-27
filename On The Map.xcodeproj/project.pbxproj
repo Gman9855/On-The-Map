@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8BA6FA221B11BABA0054485A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA211B11BABA0054485A /* Student.swift */; };
+		8BA6FA261B1684990054485A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA251B1684990054485A /* TabBarController.swift */; };
 		8BBE95181B0E7A100021B769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95171B0E7A100021B769 /* AppDelegate.swift */; };
 		8BBE951A1B0E7A100021B769 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95191B0E7A100021B769 /* LogInViewController.swift */; };
 		8BBE951D1B0E7A100021B769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBE951B1B0E7A100021B769 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		8BA6FA211B11BABA0054485A /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		8BA6FA251B1684990054485A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8BBE95121B0E7A100021B769 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBE95161B0E7A100021B769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BBE95171B0E7A100021B769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				8BBE951B1B0E7A100021B769 /* Main.storyboard */,
 				8BA6FA211B11BABA0054485A /* Student.swift */,
 				8BBE95391B0ED18A0021B769 /* MapViewController.swift */,
+				8BA6FA251B1684990054485A /* TabBarController.swift */,
 				8BBE953B1B0ED1DA0021B769 /* TableViewController.swift */,
 				8BBE951E1B0E7A100021B769 /* Images.xcassets */,
 				8BBE95201B0E7A100021B769 /* LaunchScreen.xib */,
@@ -224,6 +227,7 @@
 				8BBE951A1B0E7A100021B769 /* LogInViewController.swift in Sources */,
 				8BBE953A1B0ED18A0021B769 /* MapViewController.swift in Sources */,
 				8BBE95181B0E7A100021B769 /* AppDelegate.swift in Sources */,
+				8BA6FA261B1684990054485A /* TabBarController.swift in Sources */,
 				8BA6FA221B11BABA0054485A /* Student.swift in Sources */,
 				8BBE953C1B0ED1DA0021B769 /* TableViewController.swift in Sources */,
 			);

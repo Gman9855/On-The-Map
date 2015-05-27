@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+@objc protocol MapViewControllerDelegate {
+    optional func mapViewDidAnnotateMap()
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     let parseAppID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
@@ -18,18 +22,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager = CLLocationManager()
     var students: NSArray!
+    var delegate: MapViewControllerDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager.requestWhenInUseAuthorization()
         self.mapView.delegate = self
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    
-        NSOperationQueue.mainQueue().addOperationWithBlock(fetchStudentDataAndDropPins)
+        fetchStudentDataAndDropPins()
     }
     
     func fetchStudentDataAndDropPins() {
@@ -52,6 +51,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 var student = Student(dictionary: dictionary as! Dictionary<String, AnyObject>)
                 students.append(student)
             }
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.students = students
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.mapView.addAnnotations(students)
                 self.mapView.selectAnnotation(students[0], animated: true)
@@ -60,7 +62,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         task.resume()
     }
     
-    // MARK: MapView Delegate
+    @IBAction func pinButtonTapped(sender: UIBarButtonItem) {
+
+    }
+    
+    @IBAction func refreshButtonTapped(sender: UIBarButtonItem) {
+    }
+    
+// MARK: MapView Delegate
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if let annotation = annotation as? Student {
@@ -74,6 +83,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIView
+                view.animatesDrop = true
             }
             return view
         }
@@ -81,11 +91,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        var studentMediaURL = view.annotation.subtitle!
-        if studentMediaURL != nil {
-            if studentMediaURL.rangeOfString("http") == nil {
-                studentMediaURL = "http://" + studentMediaURL
-            }
+        if let studentMediaURL = view.annotation.subtitle {
             UIApplication.sharedApplication().openURL(NSURL(string: studentMediaURL)!)
         } else {
             return

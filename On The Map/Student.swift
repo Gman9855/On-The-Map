@@ -28,8 +28,14 @@ class Student: NSObject, MKAnnotation {
                 title = firstName
             }
         }
-        if let mediaURL = dictionary["mediaURL"] as? String {
-            subtitle = mediaURL
+        
+        if let studentURL = dictionary["mediaURL"] as? String {
+            if studentURL.rangeOfString("http") == nil {
+                var concatenatedHttpString = "http://" + studentURL
+                subtitle = concatenatedHttpString
+            } else {
+                subtitle = studentURL
+            }
         }
         
         self.coordinate = coordinate!
