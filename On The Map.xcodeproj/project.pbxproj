@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8BA6FA221B11BABA0054485A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA211B11BABA0054485A /* Student.swift */; };
 		8BA6FA261B1684990054485A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA251B1684990054485A /* TabBarController.swift */; };
+		8BA6FA2D1B195B3D0054485A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA6FA2C1B195B3D0054485A /* FBSDKCoreKit.framework */; };
+		8BA6FA2F1B1961740054485A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA6FA2E1B1961740054485A /* FBSDKLoginKit.framework */; };
 		8BBE95181B0E7A100021B769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95171B0E7A100021B769 /* AppDelegate.swift */; };
 		8BBE951A1B0E7A100021B769 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95191B0E7A100021B769 /* LogInViewController.swift */; };
 		8BBE951D1B0E7A100021B769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBE951B1B0E7A100021B769 /* Main.storyboard */; };
@@ -32,6 +34,11 @@
 /* Begin PBXFileReference section */
 		8BA6FA211B11BABA0054485A /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		8BA6FA251B1684990054485A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8BA6FA271B1788480054485A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		8BA6FA281B1788480054485A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		8BA6FA291B1788480054485A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		8BA6FA2C1B195B3D0054485A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		8BA6FA2E1B1961740054485A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		8BBE95121B0E7A100021B769 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBE95161B0E7A100021B769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BBE95171B0E7A100021B769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA6FA2F1B1961740054485A /* FBSDKLoginKit.framework in Frameworks */,
+				8BA6FA2D1B195B3D0054485A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +103,11 @@
 				8BBE953B1B0ED1DA0021B769 /* TableViewController.swift */,
 				8BBE951E1B0E7A100021B769 /* Images.xcassets */,
 				8BBE95201B0E7A100021B769 /* LaunchScreen.xib */,
+				8BA6FA271B1788480054485A /* Roboto-Medium.ttf */,
+				8BA6FA281B1788480054485A /* Roboto-Regular.ttf */,
+				8BA6FA291B1788480054485A /* Roboto-Thin.ttf */,
+				8BA6FA2E1B1961740054485A /* FBSDKLoginKit.framework */,
+				8BA6FA2C1B195B3D0054485A /* FBSDKCoreKit.framework */,
 				8BBE95151B0E7A100021B769 /* Supporting Files */,
 			);
 			path = "On The Map";
@@ -356,6 +370,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
+					/Users/Gershy/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -366,6 +387,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
+					/Users/Gershy/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
