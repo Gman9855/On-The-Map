@@ -27,7 +27,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="vXZ-lx-hvc" customClass="ViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="487.5"/>
+            <point key="canvasLocation" x="-280.5" y="487.5"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="O7N-K8-WHp">
@@ -219,10 +219,10 @@
                                 <exclude reference="QQO-LE-ps9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="sGH-dN-4mX"/>
                                 <exclude reference="AuB-Sv-L8z"/>
                                 <exclude reference="TZ1-qd-6Tr"/>
                                 <exclude reference="thx-IL-zVN"/>
-                                <exclude reference="sGH-dN-4mX"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -232,16 +232,15 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="sGH-dN-4mX"/>
                                 <include reference="AuB-Sv-L8z"/>
                                 <include reference="TZ1-qd-6Tr"/>
                                 <include reference="thx-IL-zVN"/>
-                                <include reference="sGH-dN-4mX"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="sS8-Uu-lRZ">
-                        <barButtonItem key="leftBarButtonItem" image="pin" id="XCV-78-PEE"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="nqD-Wi-6gy"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="XCV-78-PEE"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QQO-LE-ps9" id="ynT-DI-5Ej"/>
@@ -305,15 +304,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="unc-wV-mzk">
-                        <barButtonItem key="leftBarButtonItem" image="pin" id="m9U-wZ-1FH">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="m9U-wZ-1FH">
                             <connections>
-                                <action selector="pinButtonTapped:" destination="bRg-lW-MOf" id="cpT-DX-eHp"/>
-                                <segue destination="qZl-mn-Qh8" kind="show" id="no2-Ht-xAU"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Biz-oE-gP5">
-                            <connections>
-                                <action selector="refreshButtonTapped:" destination="bRg-lW-MOf" id="9Jp-VP-AlC"/>
+                                <action selector="logoutButtonTapped:" destination="bRg-lW-MOf" id="mhR-fH-ERY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -323,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpZ-Ww-nf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="121.5"/>
+            <point key="canvasLocation" x="2271" y="121.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uKG-VE-z2F">
@@ -334,6 +327,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HHl-hO-hpN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2uU-mS-kaZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QTB-Bp-VMz">
@@ -371,7 +365,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="318" width="400" height="252"/>
+                                    <rect key="frame" x="0.0" y="362" width="400" height="159"/>
                                     <mask key="subviews">
                                         <include reference="0OM-ve-Arg"/>
                                         <include reference="7LS-YS-eyq"/>
@@ -388,6 +382,9 @@
                                             <color key="titleColor" red="0.44313728810000003" green="0.61960786580000005" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="135" y="101" width="132" height="33"/>
+                                        </variation>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
@@ -405,7 +402,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="569" width="400" height="231"/>
+                                    <rect key="frame" x="0.0" y="613" width="400" height="138"/>
                                     <mask key="subviews">
                                         <include reference="tFI-7S-GQN"/>
                                     </mask>
@@ -455,7 +452,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="298"/>
+                                    <rect key="frame" x="0.0" y="64" width="400" height="205"/>
                                     <mask key="subviews">
                                         <include reference="CC0-K5-9u2"/>
                                         <include reference="ayC-3g-nM2"/>
@@ -487,18 +484,18 @@
                                 <exclude reference="rzR-jI-5UX"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="KvH-kw-bxl"/>
-                                <exclude reference="MX4-V7-2ea"/>
-                                <exclude reference="X8u-x7-UR6"/>
+                                <exclude reference="4FT-Ly-Dlm"/>
+                                <exclude reference="4hc-Ay-wCT"/>
+                                <exclude reference="C3e-n6-HlC"/>
                                 <exclude reference="oKe-CR-xsv"/>
                                 <exclude reference="qtb-6d-jgk"/>
                                 <exclude reference="rNf-We-Rrk"/>
                                 <exclude reference="H0s-MT-bcA"/>
                                 <exclude reference="IXZ-YT-yOY"/>
                                 <exclude reference="NfT-Ky-o2z"/>
-                                <exclude reference="4FT-Ly-Dlm"/>
-                                <exclude reference="4hc-Ay-wCT"/>
-                                <exclude reference="C3e-n6-HlC"/>
+                                <exclude reference="KvH-kw-bxl"/>
+                                <exclude reference="MX4-V7-2ea"/>
+                                <exclude reference="X8u-x7-UR6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -509,18 +506,18 @@
                                 <include reference="rzR-jI-5UX"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="KvH-kw-bxl"/>
-                                <include reference="MX4-V7-2ea"/>
-                                <include reference="X8u-x7-UR6"/>
+                                <include reference="4FT-Ly-Dlm"/>
+                                <include reference="4hc-Ay-wCT"/>
+                                <include reference="C3e-n6-HlC"/>
                                 <include reference="oKe-CR-xsv"/>
                                 <include reference="qtb-6d-jgk"/>
                                 <include reference="rNf-We-Rrk"/>
                                 <include reference="H0s-MT-bcA"/>
                                 <include reference="IXZ-YT-yOY"/>
                                 <include reference="NfT-Ky-o2z"/>
-                                <include reference="4FT-Ly-Dlm"/>
-                                <include reference="4hc-Ay-wCT"/>
-                                <include reference="C3e-n6-HlC"/>
+                                <include reference="KvH-kw-bxl"/>
+                                <include reference="MX4-V7-2ea"/>
+                                <include reference="X8u-x7-UR6"/>
                             </mask>
                         </variation>
                     </view>

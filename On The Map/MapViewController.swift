@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FBSDKLoginKit
 
 @objc protocol MapViewControllerDelegate {
     optional func mapViewDidAnnotateMap()
@@ -21,11 +22,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager = CLLocationManager()
-    var students: NSArray!
+    var students = [Student]()
     var delegate: MapViewControllerDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var pinButton = UIBarButtonItem(image: UIImage(named: "pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "pinButtonTapped:")
+        var refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshButtonTapped:")
+        navigationItem.rightBarButtonItems = [refreshButton, pinButton]
         locationManager.requestWhenInUseAuthorization()
         self.mapView.delegate = self
         fetchStudentDataAndDropPins()
@@ -41,9 +45,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if error != nil { // Handle error...
                 return
             }
-            
             var students = [Student]()
-            
             var parsingError: NSError? = nil
             let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
             var studentLocationDictionaries = parsedResult["results"] as! [AnyObject]
@@ -54,22 +56,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
             appDelegate.students = students
+            self.students = students
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.mapView.addAnnotations(students)
-                self.mapView.selectAnnotation(students[0], animated: true)
+                self.mapView.addAnnotations(self.students)
             })
         }
         task.resume()
     }
     
-    @IBAction func pinButtonTapped(sender: UIBarButtonItem) {
+    // MARK: Bar Button Action Methods
+    
+    func pinButtonTapped(sender: UIBarButtonItem) {
 
     }
     
-    @IBAction func refreshButtonTapped(sender: UIBarButtonItem) {
+    func refreshButtonTapped(sender: UIBarButtonItem) {
+        self.mapView.removeAnnotations(self.students)
+        fetchStudentDataAndDropPins()
     }
     
-// MARK: MapView Delegate
+    @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
+        FBSDKLoginManager().logOut()
+        var loginVC = storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! UIViewController
+        presentViewController(loginVC, animated: true, completion: nil)
+    }
+    
+    // MARK: MapView Delegate
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if let annotation = annotation as? Student {

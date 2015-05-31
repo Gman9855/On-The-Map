@@ -17,11 +17,20 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         students = appDelegate.students
+        var pinButton = UIBarButtonItem(image: UIImage(named: "pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "pinButtonTapped:")
+        var refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshButtonTapped:")
+        navigationItem.rightBarButtonItems = [refreshButton, pinButton]
     }
     
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
     }
+    
+    // MARK: Bar Button Action Methods
+    
+    
+    
+    // MARK: TableView Delegate Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return students.count
