@@ -29,6 +29,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: Bar Button Action Methods
     
+    func pinButtonTapped(sender: UIBarButtonItem) {
+        
+    }
+    
+    func refreshButtonTapped(sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
+        FBSDKLoginManager().logOut()
+        var loginVC = storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! UIViewController
+        presentViewController(loginVC, animated: true, completion: nil)
+    }
     
     
     // MARK: TableView Delegate Methods
