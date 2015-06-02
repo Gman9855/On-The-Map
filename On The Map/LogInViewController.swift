@@ -11,15 +11,18 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var verticalSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginToUdacityLabel: UILabel!
+    
     var userID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.text = "gbay9855@yahoo.com"
-        passwordTextField.text = "ebayrox9855"
-        // Do any additional setup after loading the view, typically from a nib.
+        passwordTextField.text = "..."
+        updateVerticalSpacingConstraintConstant()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -32,7 +35,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func updateVerticalSpacingConstraintConstant() {
+        let sizeClassesToConstants:Dictionary<UIUserInterfaceSizeClass, CGFloat> = [.Compact : 50, .Regular : 120, .Unspecified : 50]
+        self.verticalSpacingConstraint.constant = sizeClassesToConstants[self.traitCollection.verticalSizeClass]!
+    }
+    
     @IBAction func loginButtonTapped(sender: UIButton) {
         if emailTextField.text.isEmpty || passwordTextField.text.isEmpty {
             //make label and alert user
