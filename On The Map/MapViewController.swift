@@ -67,7 +67,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Bar Button Action Methods
     
     func pinButtonTapped(sender: UIBarButtonItem) {
-
+        var infoPostingVC = storyboard?.instantiateViewControllerWithIdentifier("infoPostingVC") as! InfoPostingViewController
+        presentViewController(infoPostingVC, animated: true, completion: nil)
     }
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
