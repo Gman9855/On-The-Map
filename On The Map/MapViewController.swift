@@ -32,48 +32,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         navigationItem.rightBarButtonItems = [refreshButton, pinButton]
         locationManager.requestWhenInUseAuthorization()
         self.mapView.delegate = self
-        fetchStudentDataAndDropPins()
+        getStudentDataAndDropPins()
     }
     
-    func fetchStudentDataAndDropPins() {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
-        request.addValue(parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(apiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        let session = NSURLSession.sharedSession()
-        
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
-                return
-            }
-            var students = [Student]()
-            var parsingError: NSError? = nil
-            let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-            var studentLocationDictionaries = parsedResult["results"] as! [AnyObject]
-            for dictionary in studentLocationDictionaries {
-                var student = Student(dictionary: dictionary as! Dictionary<String, AnyObject>)
-                students.append(student)
-            }
+    func getStudentDataAndDropPins() {
+        var fetcher = StudentInfoFetcher()
+        fetcher.requestStudentInfo { (students) -> () in
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
             appDelegate.students = students
             self.students = students
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.mapView.addAnnotations(self.students)
+                self.mapView.addAnnotations(students)
             })
         }
-        task.resume()
     }
     
     // MARK: Bar Button Action Methods
     
     func pinButtonTapped(sender: UIBarButtonItem) {
-        var infoPostingVC = storyboard?.instantiateViewControllerWithIdentifier("infoPostingVC") as! InfoPostingViewController
+        var infoPostingVC = storyboard?.instantiateViewControllerWithIdentifier("infoPostingVC") as! UIViewController
         presentViewController(infoPostingVC, animated: true, completion: nil)
     }
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
         self.mapView.removeAnnotations(self.students)
-        fetchStudentDataAndDropPins()
+        getStudentDataAndDropPins()
     }
     
     @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
