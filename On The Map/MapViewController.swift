@@ -58,7 +58,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
-        self.mapView.removeAnnotations(self.students)
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        self.mapView.removeAnnotations(appDelegate.students)
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         getStudentDataAndDropPins()
     }
     
