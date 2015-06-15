@@ -89,11 +89,5 @@ class ViewController: UIViewController {
     @IBAction func signUpButtonTapped(sender: UIButton) {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "segueToTabBar" {
-//            let mapVC = segue.destinationViewController as! MapViewController
-//        }
-//    }
 }
 
