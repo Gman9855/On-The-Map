@@ -34,7 +34,17 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
-        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        NetworkHandler().requestStudentInfo { (students) -> () in
+            if students.count > 0 {
+                self.students = students
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                })
+            }
+            
+        }
     }
     
     @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
