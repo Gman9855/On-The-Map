@@ -66,9 +66,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
-        FBSDKLoginManager().logOut()
-        var loginVC = storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! UIViewController
-        presentViewController(loginVC, animated: true, completion: nil)
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            FBSDKLoginManager().logOut()
+            var loginVC = storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! UIViewController
+            presentViewController(loginVC, animated: true, completion: nil)
+        } else {
+            NetworkHandler().logoutOfUdacity({ (success, error) -> () in
+                if error != nil {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let alertView = UIAlertView(title: nil, message: "Something went wrong.  Check your network connection and try again.", delegate: self, cancelButtonTitle: "Okay")
+                        alertView.show()
+                    })
+                    
+                } else {
+                    var loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! UIViewController
+                    self.presentViewController(loginVC, animated: true, completion: nil)
+                }
+            })
+        }
     }
     
     // MARK: MapView Delegate
