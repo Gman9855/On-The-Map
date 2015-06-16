@@ -12,4 +12,9 @@ import MapKit
 class InfoPostingViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    
+    @IBAction func cancelButtonTapped(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

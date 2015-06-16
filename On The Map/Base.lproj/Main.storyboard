@@ -148,7 +148,8 @@
                                         <exclude reference="fMw-Az-zFQ"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="91" y="324" width="220" height="30"/>
                                     <mask key="constraints">
                                         <include reference="fMw-Az-zFQ"/>
                                     </mask>
@@ -173,7 +174,8 @@
                                 <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="197" y="228" width="206" height="33"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="134" y="87" width="133" height="37"/>
                                     <mask key="constraints">
                                         <include reference="ghB-Fu-mFC"/>
                                     </mask>
@@ -216,15 +218,16 @@
                                 <exclude reference="5cz-z4-swO"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DVW-1B-nmk"/>
-                                <exclude reference="Qkd-7Q-AdU"/>
-                                <exclude reference="rXH-Iw-dNo"/>
-                                <exclude reference="aWJ-Ak-rPC"/>
-                                <exclude reference="zbx-uI-VJ8"/>
+                                <exclude reference="z6E-g2-CFw"/>
                                 <exclude reference="AZ4-Vg-PHc"/>
                                 <exclude reference="LdM-ul-gEd"/>
                                 <exclude reference="NEH-7C-Izg"/>
                                 <exclude reference="zd3-bf-JbT"/>
+                                <exclude reference="aWJ-Ak-rPC"/>
+                                <exclude reference="zbx-uI-VJ8"/>
+                                <exclude reference="DVW-1B-nmk"/>
+                                <exclude reference="Qkd-7Q-AdU"/>
+                                <exclude reference="rXH-Iw-dNo"/>
                                 <exclude reference="3X7-S6-TaK"/>
                                 <exclude reference="WUZ-ck-Doc"/>
                                 <exclude reference="qVR-nc-2l5"/>
@@ -232,7 +235,6 @@
                                 <exclude reference="MZA-8R-PB9"/>
                                 <exclude reference="g4u-pW-lzf"/>
                                 <exclude reference="pi0-Y0-0Va"/>
-                                <exclude reference="z6E-g2-CFw"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -249,15 +251,16 @@
                                 <include reference="iRz-zF-gAf"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DVW-1B-nmk"/>
-                                <include reference="Qkd-7Q-AdU"/>
-                                <include reference="rXH-Iw-dNo"/>
-                                <include reference="aWJ-Ak-rPC"/>
-                                <include reference="zbx-uI-VJ8"/>
+                                <include reference="z6E-g2-CFw"/>
                                 <include reference="AZ4-Vg-PHc"/>
                                 <include reference="LdM-ul-gEd"/>
                                 <include reference="NEH-7C-Izg"/>
                                 <include reference="zd3-bf-JbT"/>
+                                <include reference="aWJ-Ak-rPC"/>
+                                <include reference="zbx-uI-VJ8"/>
+                                <include reference="DVW-1B-nmk"/>
+                                <include reference="Qkd-7Q-AdU"/>
+                                <include reference="rXH-Iw-dNo"/>
                                 <include reference="3X7-S6-TaK"/>
                                 <include reference="WUZ-ck-Doc"/>
                                 <include reference="qVR-nc-2l5"/>
@@ -265,7 +268,6 @@
                                 <include reference="MZA-8R-PB9"/>
                                 <include reference="g4u-pW-lzf"/>
                                 <include reference="pi0-Y0-0Va"/>
-                                <include reference="z6E-g2-CFw"/>
                             </mask>
                         </variation>
                     </view>
@@ -444,10 +446,10 @@
             </objects>
             <point key="canvasLocation" x="2271" y="121.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Info Posting View Controller-->
         <scene sceneID="uKG-VE-z2F">
             <objects>
-                <viewController storyboardIdentifier="infoPostingVC" id="qZl-mn-Qh8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infoPostingVC" id="qZl-mn-Qh8" customClass="InfoPostingViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c1R-Wo-7iP"/>
                         <viewControllerLayoutGuide type="bottom" id="HHl-hO-hpN"/>
@@ -508,33 +510,21 @@
                                             <color key="titleColor" red="0.44313728810000003" green="0.61960786580000005" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="136" y="101" width="131" height="34"/>
                                         </variation>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="tFI-7S-GQN" secondAttribute="centerX" constant="-0.5" id="FMU-p0-2ui"/>
-                                    <constraint firstItem="tFI-7S-GQN" firstAttribute="top" secondItem="lOO-dE-wCr" secondAttribute="top" constant="101" id="yxK-kn-0zM"/>
-                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="tFI-7S-GQN"/>
                                     </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="FMU-p0-2ui"/>
-                                        <exclude reference="yxK-kn-0zM"/>
-                                    </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="569" width="400" height="231"/>
                                     <mask key="subviews">
                                         <include reference="tFI-7S-GQN"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="FMU-p0-2ui"/>
-                                        <include reference="yxK-kn-0zM"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -568,6 +558,18 @@
                                             <rect key="frame" x="144" y="151" width="112" height="70"/>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoS-D5-zFl">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="8" width="48" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="qZl-mn-Qh8" eventType="touchUpInside" id="2oX-0P-bkb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
@@ -575,6 +577,7 @@
                                         <exclude reference="wze-CS-sIY"/>
                                         <exclude reference="w98-OM-424"/>
                                         <exclude reference="d7l-uh-iM0"/>
+                                        <exclude reference="CoS-D5-zFl"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -583,6 +586,7 @@
                                         <include reference="wze-CS-sIY"/>
                                         <include reference="w98-OM-424"/>
                                         <include reference="d7l-uh-iM0"/>
+                                        <include reference="CoS-D5-zFl"/>
                                     </mask>
                                 </variation>
                             </view>
