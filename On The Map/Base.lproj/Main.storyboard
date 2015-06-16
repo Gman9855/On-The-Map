@@ -605,6 +605,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="QTB-Bp-VMz" id="hnY-n9-4iI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOp-sm-joE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
 class InfoPostingViewController: UIViewController {
     
+    @IBOutlet weak var mapView: MKMapView!
 }
