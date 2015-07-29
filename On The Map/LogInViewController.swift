@@ -14,14 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var verticalSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginToUdacityLabel: UILabel!
     
     var userID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.text = "gbay9855@yahoo.com"
-        passwordTextField.text = "..."
         updateVerticalSpacingConstraintConstant()
     }
     
@@ -29,11 +26,6 @@ class ViewController: UIViewController {
         if FBSDKAccessToken.currentAccessToken() != nil {
             self.performSegueWithIdentifier("segueToTabBar", sender: self)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func updateVerticalSpacingConstraintConstant() {
@@ -56,7 +48,9 @@ class ViewController: UIViewController {
                     }
                     if error!.code == -1010 {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            var alert = UIAlertView(title: nil, message: error?.domain, delegate: self, cancelButtonTitle: "Okay")
+                            let userInfoDict = error!.userInfo as! [String: String]
+                            let errorMessage = userInfoDict["error"]
+                            var alert = UIAlertView(title: nil, message: errorMessage, delegate: self, cancelButtonTitle: "Okay")
                             alert.show()
                         })
                     }
@@ -71,16 +65,16 @@ class ViewController: UIViewController {
 
     @IBAction func facebookLoginButtonTapped(sender: UIButton) {
         NetworkHandler().loginWithFacebook { (success, error) -> () in
-            if error != nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertView(title: nil, message: error?.domain, delegate: self, cancelButtonTitle: "Okay")
-                    alert.show()
-                    return
-                })
-            }
             if success {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.performSegueWithIdentifier("segueToTabBar", sender: self)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let userInfoDict = error!.userInfo as! [String: String]
+                    let errorMessage = userInfoDict["error"]
+                    var alert = UIAlertView(title: nil, message: errorMessage, delegate: self, cancelButtonTitle: "Okay")
+                    alert.show()
                 })
             }
         }
@@ -90,4 +84,3 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
 }
-

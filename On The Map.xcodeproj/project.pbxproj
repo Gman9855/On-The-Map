@@ -10,8 +10,8 @@
 		8B0F30DD1B1E76BE0022D25D /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0F30DC1B1E76BE0022D25D /* InfoPostingViewController.swift */; };
 		8B0F30E31B2250B70022D25D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0F30E21B2250B70022D25D /* MBProgressHUD.m */; };
 		8B0F30E71B2375B20022D25D /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0F30E61B2375B20022D25D /* NetworkHandler.swift */; };
-		8BA6FA221B11BABA0054485A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA211B11BABA0054485A /* Student.swift */; };
-		8BA6FA261B1684990054485A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA251B1684990054485A /* TabBarController.swift */; };
+		8B8423921B56DC7900B69539 /* SubmittedPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8423911B56DC7900B69539 /* SubmittedPin.swift */; };
+		8BA6FA221B11BABA0054485A /* StudentPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6FA211B11BABA0054485A /* StudentPin.swift */; };
 		8BA6FA2D1B195B3D0054485A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA6FA2C1B195B3D0054485A /* FBSDKCoreKit.framework */; };
 		8BA6FA2F1B1961740054485A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA6FA2E1B1961740054485A /* FBSDKLoginKit.framework */; };
 		8BBE95181B0E7A100021B769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95171B0E7A100021B769 /* AppDelegate.swift */; };
@@ -22,6 +22,7 @@
 		8BBE952E1B0E7A100021B769 /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE952D1B0E7A100021B769 /* On_The_MapTests.swift */; };
 		8BBE953A1B0ED18A0021B769 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE95391B0ED18A0021B769 /* MapViewController.swift */; };
 		8BBE953C1B0ED1DA0021B769 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE953B1B0ED1DA0021B769 /* TableViewController.swift */; };
+		8BEBED021B30BFFB00820269 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBED011B30BFFB00820269 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,8 @@
 		8B0F30E11B2250B60022D25D /* On The Map-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "On The Map-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B0F30E21B2250B70022D25D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B0F30E61B2375B20022D25D /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
-		8BA6FA211B11BABA0054485A /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		8BA6FA251B1684990054485A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8B8423911B56DC7900B69539 /* SubmittedPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmittedPin.swift; sourceTree = "<group>"; };
+		8BA6FA211B11BABA0054485A /* StudentPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentPin.swift; sourceTree = "<group>"; };
 		8BA6FA271B1788480054485A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8BA6FA281B1788480054485A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8BA6FA291B1788480054485A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		8BBE952D1B0E7A100021B769 /* On_The_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapTests.swift; sourceTree = "<group>"; };
 		8BBE95391B0ED18A0021B769 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8BBE953B1B0ED1DA0021B769 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8BEBED011B30BFFB00820269 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +107,12 @@
 				8BBE95171B0E7A100021B769 /* AppDelegate.swift */,
 				8BBE95191B0E7A100021B769 /* LogInViewController.swift */,
 				8BBE951B1B0E7A100021B769 /* Main.storyboard */,
-				8BA6FA211B11BABA0054485A /* Student.swift */,
+				8BA6FA211B11BABA0054485A /* StudentPin.swift */,
+				8B8423911B56DC7900B69539 /* SubmittedPin.swift */,
 				8BBE95391B0ED18A0021B769 /* MapViewController.swift */,
 				8B0F30E61B2375B20022D25D /* NetworkHandler.swift */,
+				8BEBED011B30BFFB00820269 /* Student.swift */,
 				8B0F30DC1B1E76BE0022D25D /* InfoPostingViewController.swift */,
-				8BA6FA251B1684990054485A /* TabBarController.swift */,
 				8BBE953B1B0ED1DA0021B769 /* TableViewController.swift */,
 				8BBE951E1B0E7A100021B769 /* Images.xcassets */,
 				8BBE95201B0E7A100021B769 /* LaunchScreen.xib */,
@@ -255,10 +258,11 @@
 				8BBE953A1B0ED18A0021B769 /* MapViewController.swift in Sources */,
 				8B0F30E71B2375B20022D25D /* NetworkHandler.swift in Sources */,
 				8BBE95181B0E7A100021B769 /* AppDelegate.swift in Sources */,
-				8BA6FA261B1684990054485A /* TabBarController.swift in Sources */,
 				8B0F30E31B2250B70022D25D /* MBProgressHUD.m in Sources */,
-				8BA6FA221B11BABA0054485A /* Student.swift in Sources */,
+				8B8423921B56DC7900B69539 /* SubmittedPin.swift in Sources */,
+				8BA6FA221B11BABA0054485A /* StudentPin.swift in Sources */,
 				8B0F30DD1B1E76BE0022D25D /* InfoPostingViewController.swift in Sources */,
+				8BEBED021B30BFFB00820269 /* Student.swift in Sources */,
 				8BBE953C1B0ED1DA0021B769 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

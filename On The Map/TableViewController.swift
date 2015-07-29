@@ -12,15 +12,16 @@ import FBSDKLoginKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var students: [Student]!
+    var appDelegate: AppDelegate {
+        let object = UIApplication.sharedApplication().delegate
+        return object as! AppDelegate
+    }
+    lazy var networkHandler = NetworkHandler()
     
     override func viewDidLoad() {
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        students = appDelegate.students
-        var pinButton = UIBarButtonItem(image: UIImage(named: "pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "pinButtonTapped:")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addPostedStudentLocationToTableView:", name: "didPostStudentLocationNotification", object: nil)
         var refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshButtonTapped:")
-        navigationItem.rightBarButtonItems = [refreshButton, pinButton]
+        navigationItem.rightBarButtonItem = refreshButton
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,21 +30,16 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: Bar Button Action Methods
     
-    func pinButtonTapped(sender: UIBarButtonItem) {
-        
-    }
-    
     func refreshButtonTapped(sender: UIBarButtonItem) {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        NetworkHandler().requestStudentInfo { (students) -> () in
+        networkHandler.requestStudents { (students) -> () in
             if students.count > 0 {
-                self.students = students
+                self.appDelegate.students = students
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
                 })
             }
-            
         }
     }
     
@@ -57,19 +53,21 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: TableView Delegate Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return appDelegate.students.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        let student = students[indexPath.row]
-        cell.textLabel?.text = student.title
+        let student = appDelegate.students[indexPath.row]
+        cell.textLabel?.text = student.fullName
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = students[indexPath.row]
-        UIApplication.sharedApplication().openURL(NSURL(string: student.subtitle)!)
+        let student = appDelegate.students[indexPath.row]
+        if let mediaURL = student.mediaURL {
+            UIApplication.sharedApplication().openURL(student.mediaURL!)
+        }
     }
 }
