@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Student {
+struct Student {
     
     var firstName: String!
     var lastName: String!
@@ -18,11 +18,42 @@ class Student {
     var locationDescription: String!
     var fullName: String!
     
-    init(firstName: String, lastName: String, locationCoordinate: CLLocationCoordinate2D, mediaURL: NSURL?) {
+    init(studentInfoDictionary: NSDictionary) {
+        var coordinate: CLLocationCoordinate2D?
+        var firstName: String!
+        var lastName: String!
+        var mediaURL: NSURL?
+        
+        if let fName = studentInfoDictionary["firstName"] as? String {
+            if let lName = studentInfoDictionary["lastName"] as? String {
+                var lat = studentInfoDictionary["latitude"]! as! NSNumber
+                var long = studentInfoDictionary["longitude"]! as! NSNumber
+                
+                coordinate = CLLocationCoordinate2DMake(lat.doubleValue, long.doubleValue)
+                firstName = fName
+                lastName = lName
+            }
+        }
+        
+        if let studentURL = studentInfoDictionary["mediaURL"] as? String {
+            mediaURL = self.URLlinkFromString(studentURL)
+        }
+        
         self.firstName = firstName
         self.lastName = lastName
-        self.locationCoordinate = locationCoordinate
+        self.locationCoordinate = coordinate
         self.mediaURL = mediaURL
         self.fullName = firstName + " " + lastName
+    }
+    
+    private func URLlinkFromString(urlString: String) -> NSURL? {
+        var returnString = urlString
+        if urlString.rangeOfString(" ") != nil {
+            return nil
+        }
+        if urlString.rangeOfString("http") == nil {
+            returnString = "http://" + urlString
+        }
+        return NSURL(string: returnString)
     }
 }

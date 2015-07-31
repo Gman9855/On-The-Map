@@ -149,27 +149,11 @@ class NetworkHandler {
             let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
             var studentLocationDictionaries = parsedResult["results"] as! [AnyObject]
             for dictionary in studentLocationDictionaries {
-                var coordinate: CLLocationCoordinate2D?
-                var firstName: String?
-                var lastName: String?
-                var mediaURL: NSURL?
-                
-                if let fName = dictionary["firstName"] as? String {
-                    if let lName = dictionary["lastName"] as? String {
-                        coordinate = CLLocationCoordinate2DMake(dictionary["latitude"] as! Double, dictionary["longitude"] as! Double)
-                        firstName = fName
-                        lastName = lName
-                    }
-                }
-                
-                if let studentURL = dictionary["mediaURL"] as? String {
-                    mediaURL = self.URLlinkFromString(studentURL)
-                }
-                var student = Student(firstName: firstName!, lastName: lastName!, locationCoordinate: coordinate!, mediaURL: mediaURL)
+                var student = Student(studentInfoDictionary: dictionary as! NSDictionary)
                 students.append(student)
             }
             
-            completion(students: students)
+            completion(students: students, error: nil)
         }
         task.resume()
     }
