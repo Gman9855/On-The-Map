@@ -198,7 +198,8 @@ class NetworkHandler {
                     print(parsedResult)
                     
                     if parsedResult["createdAt"] != nil || parsedResult["updatedAt"] != nil {
-                        let student = Student(firstName: firstName, lastName: lastName, locationCoordinate: coordinate, mediaURL: self.URLlinkFromString(mediaURL))
+                        let dictionary = ["firstName" : firstName, "lastName" : lastName, "latitude" : coordinate.latitude, "longitude" : coordinate.longitude, "mediaURL" : mediaURL]
+                        let student = Student(studentInfoDictionary: dictionary)
                         
                         if let objectID = parsedResult["objectId"] as? String {
                             self.objectID = objectID
