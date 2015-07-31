@@ -174,21 +174,20 @@ class NetworkHandler {
     }
     
     func requestMapPinForLocation(location: String, completion: (mapPin: MKPointAnnotation?, error: NSError?) -> ()) {
-        var searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = location
-        var localSearch = MKLocalSearch(request: searchRequest)
-        localSearch.startWithCompletionHandler { (response: MKLocalSearchResponse!, error: NSError!) -> Void in
-            if (error == nil) {
-                if let mapItem = self.mapItemFromMKLocalSearchResponse(response) {
-                    var pin = MKPointAnnotation()
-                    pin.coordinate = mapItem.placemark.location.coordinate
-                    pin.title = mapItem.name
-                    completion(mapPin: pin, error: error)
-                }
-            } else {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location, completionHandler: { (result: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil {
                 completion(mapPin: nil, error: error)
+            } else {
+                if let placemark = result[0] as? CLPlacemark {
+                    var pin = MKPointAnnotation()
+                    pin.coordinate = placemark.location.coordinate
+                    pin.title = placemark.name
+                    completion(mapPin: pin, error: nil)
+                }
             }
-        }
+            
+        })
     }
     
     func postStudentLocation(mapString: String, coordinate: CLLocationCoordinate2D, mediaURL: String, shouldReplace: Bool, completion: (student: Student?, error: NSError?) -> ()) {

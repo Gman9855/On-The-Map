@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2098788F-51D0-4EC8-B032-2148BFF6FA8A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>On The Map</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F82C503AD5E89920081E8617DAE91284139319AA</key>
 		<string>https://github.com/Gman9855/On-The-Map.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>On The Map.xcodeproj/project.xcworkspace</string>
+	<string>On The Map.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F82C503AD5E89920081E8617DAE91284139319AA</key>
