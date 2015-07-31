@@ -133,7 +133,7 @@ class NetworkHandler {
         task.resume()
     }
     
-    func requestStudents(completion: (students: [Student]) -> ()) {
+    func requestStudents(completion: (students: [Student]?, error: NSError?) -> ()) {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
         request.addValue(parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(apiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -141,6 +141,7 @@ class NetworkHandler {
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil { // Handle error...
+                completion(students: nil, error: error)
                 return
             }
             var students = [Student]()

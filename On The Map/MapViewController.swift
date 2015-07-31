@@ -42,15 +42,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func getStudentDataAndDropPins() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        networkHandler.requestStudents { (students) -> () in
-            self.appDelegate.students = students
-            self.studentPins = students.map({ (student: Student) -> StudentPin in
-                return StudentPin(student: student)
-            })
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.mapView.addAnnotations(self.studentPins)
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-            })
+        networkHandler.requestStudents { (students, error) -> () in
+            if let students = students {
+                self.appDelegate.students = students
+                self.studentPins = students.map({ (student: Student) -> StudentPin in
+                    return StudentPin(student: student)
+                })
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.mapView.addAnnotations(self.studentPins)
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    UIAlertView(title: nil, message: "Couldn't grab students.  Check your internet and try again.", delegate: self, cancelButtonTitle: "Okay").show()
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                })
+            }
         }
     }
     
@@ -117,11 +124,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.mapView.removeAnnotations(self.studentPins)
-        })
         getStudentDataAndDropPins()
     }
     

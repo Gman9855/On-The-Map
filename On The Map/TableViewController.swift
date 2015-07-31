@@ -32,11 +32,16 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func refreshButtonTapped(sender: UIBarButtonItem) {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        networkHandler.requestStudents { (students) -> () in
-            if students.count > 0 {
+        networkHandler.requestStudents { (students, error) -> () in
+            if let students = students {
                 self.appDelegate.students = students
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    UIAlertView(title: nil, message: "Couldn't grab students.  Check your internet and try again.", delegate: self, cancelButtonTitle: "Okay").show()
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
                 })
             }
